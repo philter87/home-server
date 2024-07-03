@@ -2,7 +2,7 @@
 On the server execute these commands
 
 ```bash
-# Create ssh key
+# Create ssh key (The script will be executed as root )
 sudo ssh-keygen
 sudo cat root/.ssh/xxx.pub
 
