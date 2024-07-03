@@ -11,6 +11,9 @@ cat ~/.ssh/xxx.pub
 # Get the home-server code
 git clone git@github.com:philter87/home-server.git
 
+# Ensure permissions to execute
+chmod +x deploy-branch.sh
+
 # Execute task every minute
 sudo crontab -e
 # Add the follwing line: * * * * * /home/philter87/home-server/deploy-branch.sh
