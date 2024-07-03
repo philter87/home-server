@@ -19,10 +19,10 @@ jq -c '.[]' apps.json | while read app_json; do
     
     # Create folder if missing
     if [ ! -d $repo ]; then
-      mkdir -p "git_repositories/$repo"
+      mkdir -p "apps/$repo"
     fi
 
-    cd "git_repositories/$repo"
+    cd "apps/$repo"
 
     # Clone repository if missing
     if [ ! -d ".git" ]; then
@@ -32,8 +32,8 @@ jq -c '.[]' apps.json | while read app_json; do
     
 
     git_output=$(git pull origin main 2>&1)
-    #if [[ $git_output == *"Already up to date"* ]]; then
-    if false ; then
+    if [[ $git_output == *"Already up to date"* ]]; then
+    #if false ; then
       echo "NOTHING CHANGED"
     else
       echo "Change detected"
