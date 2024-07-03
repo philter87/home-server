@@ -11,7 +11,13 @@ cat ~/.ssh/xxx.pub
 # Get the home-server code
 git clone git@github.com:philter87/home-server.git
 
+# Execute task every minute
 sudo crontab -e
+# Add the follwing line: * * * * * /home/philter87/home-server/deploy-branch.sh
+
+# Check logs in 
+tail /var/log/syslog
+
 ```
 
 # Initialize server
