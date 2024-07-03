@@ -1,4 +1,11 @@
-# Local server commands
+# How to get started
+
+```bash
+# Get the script
+git clone git@github.com:philter87/home-server.git
+```
+
+# Initialize server
 My notes on running a server at home
 
 ```bash
@@ -12,5 +19,4 @@ sudo snap install avahi
 sudo apt-get update
 sudo apt-get upgrade
 sudo reboot
-
 ```
