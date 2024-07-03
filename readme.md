@@ -16,7 +16,10 @@ chmod +x deploy-branch.sh
 
 # Execute task every minute
 sudo crontab -e
-# Add the follwing line: * * * * * /home/philter87/home-server/deploy-branch.sh
+# Add the follwing line: 
+# * * * * * /home/philter87/home-server/deploy-branch.sh
+# OR to include some logs
+# * * * * * /home/philter87/home-server/deploy-branch.sh > /var/log/home-server.log 2>&1
 
 # Check logs in 
 tail /var/log/syslog
