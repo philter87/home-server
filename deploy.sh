@@ -43,8 +43,8 @@ jq -c '.[]' apps.json | while read app_json; do
     fi
     
     git_output=$(git pull origin main 2>&1)
-    #if [[ $git_output == *"Already up to date"* ]]; then
-    if false ; then
+    if [[ $git_output == *"Already up to date"* ]]; then
+    #if false ; then
       echo "NOTHING CHANGED"
     else
       echo "Change detected"
