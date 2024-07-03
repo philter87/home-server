@@ -31,16 +31,17 @@ jq -c '.[]' apps.json | while read app_json; do
     
 
     git_output=$(git pull origin main 2>&1)
-    if [[ $git_output == *"Already up to date"* ]]; then
+    #if [[ $git_output == *"Already up to date"* ]]; then
+    if false ; then
       echo "NOTHING CHANGED"
     else
       echo "Change detected"
       cd $sub_folder
       # Docker compose up everything
-      docker-compose --no-recreate -f docker-compose.yml -f docker-compose.prod.yml up -d 
+      docker-compose -f docker-compose.yml -f docker-compose.prod.yml up -d --no-recreate
 
       docker compose build web
-      docker compose up -f docker-compose.yml -f docker-compose.prod.yml --no-deps -d web
+      docker compose up --no-deps -d web
     fi
 
     cd $script_dir
