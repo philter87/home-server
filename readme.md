@@ -7,7 +7,7 @@ sudo snap install docker
 # Install snap to broadcast hostname on local network
 sudo snap install avahi
 
-# update all
+# Upgrade dependencies
 sudo apt-get update
 sudo apt-get upgrade
 sudo reboot
