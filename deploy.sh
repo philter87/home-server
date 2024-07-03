@@ -27,6 +27,7 @@ jq -c '.[]' apps.json | while read app_json; do
 
     # Clone repository if missing
     if [ ! -d ".git" ]; then
+      echo "Cloning repository $repo_url"
       git clone $repo_url .
     fi
 
