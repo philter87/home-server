@@ -33,8 +33,13 @@ jq -c '.[]' apps.json | while read app_json; do
 
     # Clone repository if missing
     if [ ! -d ".git" ]; then
-      echo "Cloning repository $repo_url"
+      echo "New repo detected: $repo_url"
       git clone $repo_url .
+
+      cd $sub_folder
+      docker-compose up -d
+      
+      continue
     fi
     
     git_output=$(git pull origin main 2>&1)
@@ -45,10 +50,6 @@ jq -c '.[]' apps.json | while read app_json; do
       echo "Change detected"
       
       cd $sub_folder
-
-      # Docker compose up everything
-      docker-compose up -d --no-recreate
-
       docker compose build web
       docker compose up --no-deps -d web
     fi
