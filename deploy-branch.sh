@@ -41,7 +41,7 @@ jq -c '.[]' apps.json | while read app_json; do
       docker-compose -f docker-compose.yml -f docker-compose.prod.yml up -d --no-recreate
 
       docker compose build web
-      docker compose up --no-deps -d web
+      docker compose -f docker-compose.yml -f docker-compose.prod.yml up --no-deps -d web
     fi
 
     cd $script_dir

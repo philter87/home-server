@@ -1,8 +1,17 @@
 # How to get started
+On the server execute these commands
 
 ```bash
-# Get the script
+# Create ssh key
+ssh-keygen
+cat ~/.ssh/xxx.pub
+
+# Copy paste public sshkey into github account. Login and go to:  Profile / Settings / SSH & GPG keys / New SSH key
+
+# Get the home-server code
 git clone git@github.com:philter87/home-server.git
+
+sudo crontab -e
 ```
 
 # Initialize server
