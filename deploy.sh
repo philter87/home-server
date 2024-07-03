@@ -36,7 +36,7 @@ jq -c '.[]' apps.json | while read app_json; do
     #if false ; then
       echo "NOTHING CHANGED"
     else
-      echo "Change detected"
+      echo "Change detected $pwd"
       cd $sub_folder
       # Docker compose up everything
       docker-compose -f docker-compose.yml -f docker-compose.prod.yml up -d --no-recreate
