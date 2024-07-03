@@ -14,14 +14,14 @@ git clone git@github.com:philter87/home-server.git
 # Execute task every minute
 sudo crontab -e
 # Add the follwing line: 
-# * * * * * /home/philter87/home-server/deploy-branch.sh
+# * * * * * /home/philter87/home-server/deploy.sh
 
 # OR to include some logs
-# * * * * * /home/philter87/home-server/deploy-branch.sh > /var/log/home-server.log 2>&1
+# * * * * * /home/philter87/home-server/deploy.sh > /var/log/home-server.log 2>&1
 
 # Check logs in 
-tail /var/log/syslog
-tail /var/log/home-server.log
+sudo tail /var/log/syslog
+sudo tail /var/log/home-server.log
 
 ```
 
