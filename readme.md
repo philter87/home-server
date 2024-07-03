@@ -1,7 +1,8 @@
 # Local server commands
+My notes on running a server at home
 
 ```bash
-# Install docker 
+# Install docker
 sudo snap install docker
 
 # Install snap to broadcast hostname on local network
