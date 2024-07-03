@@ -1,6 +1,7 @@
 #!/bin/bash
 
-script_dir=$(dirname $0)
+script_path=$(realpath "$0")
+script_dir=$(dirname "$script_path")
 cd $script_dir
 
 echo ""
@@ -8,6 +9,11 @@ echo "Deploying repositories..."
 echo ""
 
 jq -c '.[]' apps.json | while read app_json; do
+
+    echo "Current directory: $script_dir"
+    cd "$script_dir"
+    echo "Current directory: $script_dir"
+
     # Get the value of the key
     repo=$(echo $app_json | jq -r '.repo')
     service_name=$(echo $app_json | jq -r '.serviceName')
@@ -30,13 +36,10 @@ jq -c '.[]' apps.json | while read app_json; do
       echo "Cloning repository $repo_url"
       git clone $repo_url .
     fi
-
-    
     
     git_output=$(git pull origin main 2>&1)
-    echo "Git output: $git_output"
-    if [[ $git_output == *"Already up to date"* ]]; then
-    #if false ; then
+    #if [[ $git_output == *"Already up to date"* ]]; then
+    if false ; then
       echo "NOTHING CHANGED"
     else
       echo "Change detected"
@@ -44,11 +47,9 @@ jq -c '.[]' apps.json | while read app_json; do
       cd $sub_folder
 
       # Docker compose up everything
-      docker-compose -f docker-compose.yml -f docker-compose.prod.yml up -d --no-recreate
+      docker-compose up -d --no-recreate
 
       docker compose build web
-      docker compose -f docker-compose.yml -f docker-compose.prod.yml up --no-deps -d web
+      docker compose up --no-deps -d web
     fi
-
-    cd $script_dir
 done
